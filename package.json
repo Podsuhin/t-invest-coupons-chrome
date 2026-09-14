@@ -1,0 +1,14 @@
+{
+  "name": "t-invest-bond-coupons",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "package": "python3 scripts/package.py",
+    "preview": "python3 -m http.server 8765 --bind 127.0.0.1"
+  },
+  "devDependencies": {
+    "linkedom": "^0.18.13"
+  }
+}
