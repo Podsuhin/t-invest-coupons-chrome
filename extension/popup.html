@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мои купоны</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="brand-icon" aria-hidden="true">к<span>·</span></span><div><h1>Мои купоны</h1><p>Облигации · Т‑Инвестиции</p></div></div>
+    <button id="refresh" class="icon-button" title="Обновить данные с сайта" aria-label="Обновить данные с сайта"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 7a7.5 7.5 0 0 1 12-1L20 9M4 15l2.5 3a7.5 7.5 0 0 0 12-1"/></svg></button>
+  </header>
+  <main>
+    <div id="demo-banner" class="demo-banner" hidden>Демонстрация · вымышленные данные</div>
+    <div class="account-row"><span class="live-dot"></span><label for="account">Счёт</label><select id="account" aria-label="Счёт портфеля"></select><span id="bond-count"></span></div>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section id="loading" class="loading" hidden><div><span id="progress-text">Собираю данные…</span><button id="stop" class="text-button">Остановить</button></div><progress id="progress" max="100" value="0"></progress><p>Окно можно закрыть — сбор продолжится.</p></section>
+    <section id="welcome" class="welcome" hidden><span class="welcome-symbol" aria-hidden="true">↗</span><h2>Все купоны в одном окне</h2><p>Откройте свой счёт на сайте Т‑Инвестиций. Расширение соберёт облигации и их выплаты.</p><button id="start" class="primary">Собрать с сайта</button><button id="demo" class="text-button">Посмотреть пример</button></section>
+    <div id="dashboard" hidden>
+      <section class="portfolio-card"><div class="card-caption">Стоимость облигаций <span class="small-badge">ПОРТФЕЛЬ</span></div><div id="value" class="portfolio-value">—</div></section>
+      <div class="tax-control" role="group" aria-label="Учет налога"><button id="gross" aria-pressed="true">До налога</button><button id="net" aria-pressed="false">После налога <span>−13%</span></button></div>
+      <section class="income-card"><div><p>Купоны за 12 месяцев</p><strong id="annual">—</strong><span id="annual-caption">По графику выплат</span></div><div class="yield"><p>Годовых</p><strong id="yield">—</strong><span>К стоимости облигаций</span></div></section>
+      <section class="calendar"><div class="section-title"><h2>Календарь купонов</h2><span>Суммы выплат</span></div>
+        <div class="current-month"><div class="month-title"><h3 id="current-month">—</h3><span class="current-badge">Этот месяц</span></div><div class="month-amounts"><div><p><span class="dot green"></span>Уже выплачено</p><strong id="paid">—</strong><span id="paid-count"></span></div><div><p><span class="dot yellow"></span>Ещё поступит</p><strong id="remaining">—</strong><span id="remaining-count"></span></div></div><div class="month-progress" aria-hidden="true"><span id="paid-progress"></span></div></div>
+        <div class="future-month"><div><h3 id="next-month">—</h3><span id="next-count"></span></div><strong id="next">—</strong></div>
+        <div class="future-month"><div><h3 id="third-month">—</h3><span id="third-count"></span></div><strong id="third">—</strong></div>
+      </section>
+      <div id="warnings" class="warnings" role="status" hidden></div>
+      <details id="details"><summary>Из чего складывается расчёт</summary><p>Доход за год — купоны с сегодняшнего дня на 12 месяцев вперёд при текущем количестве бумаг. Доходность — этот доход, делённый на стоимость облигаций. Погашение номинала и изменение цены в доход не входят.</p><p>Выплаченные купоны взяты из «Событий», включая уже проданные облигации. Будущие — из графиков «Купоны». Купоны с прошедшей датой не считаются будущими; фактическое зачисление может запаздывать.</p><p>«После налога» — расчёт по единой ставке 13%, а не справка об удержанном банком налоге. Стоимость облигаций остаётся прежней.</p><div id="breakdown"></div><button id="clear" class="text-button">Удалить собранные данные</button></details>
+    </div>
+    <footer><span id="updated">Данные остаются в вашем браузере</span><a href="https://www.tbank.ru/invest/portfolio/" target="_blank" rel="noopener noreferrer">Портфель ↗</a></footer>
+  </main>
+</body>
+</html>

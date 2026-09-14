@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Купоны · Т‑Инвестиции",
+  "version": "1.0.0",
+  "description": "Стоимость облигаций и календарь купонов из открытого сайта Т‑Инвестиций. До и после налога 13%.",
+  "minimum_chrome_version": "114",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://www.tbank.ru/*"],
+  "background": {"service_worker": "background.js", "type": "module"},
+  "action": {
+    "default_title": "Мои облигации и купоны",
+    "default_popup": "popup.html",
+    "default_icon": {"16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png"}
+  },
+  "icons": {"16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png"},
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"}
+}
