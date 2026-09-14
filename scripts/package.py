@@ -17,6 +17,7 @@ with ZipFile(archive, 'w', ZIP_DEFLATED) as z:
     files = [(p, 'extension/' + p.relative_to(source).as_posix())
              for p in sorted(source.rglob('*')) if p.is_file() and not p.name.startswith('.')]
     files.append((root / 'README.md', 'README.md'))
+    files.append((root / 'docs' / 'preview.png', 'docs/preview.png'))
     for path, name in files:
         item = ZipInfo(name, (2026, 9, 14, 0, 0, 0))
         item.compress_type = ZIP_DEFLATED
